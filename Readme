@@ -1,0 +1,23 @@
+This Powershell script encapsulates tasks needed to run Windows' bluetooth file transfer wizard (fsquirt) in receive mode.
+This will either acquire a file already in-transit from the likes of a cell phone, or a file whose transmission from such a device
+will be started subsequently (e.g. from a 'share' button on the phone).  Note: it is hardwired for RECEIVE only.
+
+Of greatest interest, the script turns on the bluetooth radio if it is not already on, and turns it off upon completion.
+
+THe script has some dependencies on the way it is invoked, and pretty much presumes it is started from a Windows shortcut
+(I keep my shortcut in C:\Users\<user>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs)
+
+  On the shortcut's SHORTCUT tab:
+    - Target: <path to PS>\powershell.exe -NoLogo -NoProfile -NonInteractive
+                                          -ExecutionPolicy Unrestricted -File <path to script>\BTRx.ps1
+      [remembering the PS options is one reason to launch via shortcut]
+
+    - Start In: C:\Users\<user>\Downloads
+      [optional; streamlines the user interaction, but fsquirt allows ad-hoc modification]
+
+    - Run: Normal Window or Minimized
+
+    - Click "Advanced" button and ensure 'Run as administrator' is checked.
+      [One of the main reasons starting from a shortcut is recommended]
+
+Good Bluetooth-ing!
